@@ -8,13 +8,13 @@ namespace ConsoleApp1
 {
     class Input
     {
-        public struct Vector
+        struct Vector
         {
             public int x;
             public int y;
         }
 
-        public Vector vector;
+        Vector vector;
 
         public Input(ConsoleKey up, ConsoleKey down, ConsoleKey right, ConsoleKey left)
         {
@@ -55,3 +55,4 @@ namespace ConsoleApp1
 
     }
 }
+
