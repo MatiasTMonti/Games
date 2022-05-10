@@ -8,51 +8,58 @@ namespace ConsoleApp1
 {
     class Input
     {
-        struct Vector
-        {
-            public int x;
-            public int y;
-        }
-
-        Vector vector;
+        private ConsoleKey up;
+        private ConsoleKey down;
+        private ConsoleKey right;
+        private ConsoleKey left;
 
         public Input(ConsoleKey up, ConsoleKey down, ConsoleKey right, ConsoleKey left)
         {
-            Keyboard(up, down, right, left);
+            this.up = up;
+            this.down = down;
+            this.right = right;
+            this.left = left;
         }
 
-        public void Keyboard(ConsoleKey up, ConsoleKey down, ConsoleKey right, ConsoleKey left)
+        public void CheckInput(ConsoleKey key, Personaje player)
         {
-            MoveUp(up);
-            MoveDown(down);
-            MoveRight(right);
-            MoveLeft(left);
-        }
-
-        private void MoveUp(ConsoleKey up)
-        {
-            if (true)
+            if (key == up)
             {
-
+                MoveUp(ref player.posY);
+            }
+            else if (key == down)
+            {
+                MoveDown(ref player.posY);
+            }
+            else if (key == right)
+            {
+                MoveRight(ref player.posX);
+            }
+            else if (key == left)
+            {
+                MoveLeft(ref player.posX);
             }
         }
 
-        private void MoveDown(ConsoleKey down)
+        private void MoveUp(ref int posY)
         {
-
+            posY++;
         }
 
-        private void MoveRight(ConsoleKey right)
+        private void MoveDown(ref int posY)
         {
-
+            posY--;
         }
 
-        private void MoveLeft(ConsoleKey left)
+        private void MoveRight(ref int posX)
         {
-
+            posX++;
         }
 
-
+        private void MoveLeft(ref int posX)
+        {
+            posX--;
+        }
     }
 }
 

@@ -9,27 +9,44 @@ namespace ConsoleApp1
 {
     class GameManager
     {
+        Personaje player1;
+        Input input;
+
+        ConsoleKey cki;
+
         public void Run()
         {
-            Input();
+            cki = Console.ReadKey(true).Key;
 
-            Console.Clear();
+            Init();
 
-            Draw();
+            do
+            {
+                Input();
 
-            Thread.Sleep(100);
+                Console.Clear();
+
+                Draw();
+
+                Thread.Sleep(100);
+
+            } while (true);
+        }
+
+        private void Init()
+        {
+            player1 = new Personaje();
+            input = new Input(ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.S);
         }
 
         private void Input()
         {
-
+            input.CheckInput(cki, player1);
         }
 
         private void Draw()
         {
-
-        }
-
-        
+            player1.DrawPlayers("1");
+        }  
     }
 }
