@@ -9,6 +9,9 @@ namespace ConsoleApp1
 
         Random rand = new Random();
 
+        private int randomRespawnX;
+        private int randomRespawnY;
+
         public int PosX
         {
             get => posX;
@@ -52,6 +55,15 @@ namespace ConsoleApp1
                 default:
                     break;
             }
+        }
+
+        public void RespawnRandom()
+        {
+            randomRespawnX = rand.Next(0, 21);
+            randomRespawnY = rand.Next(0, 21);
+
+            posX = randomRespawnX;
+            PosY = randomRespawnY;
         }
 
         public void DrawEnemys(string draw)
