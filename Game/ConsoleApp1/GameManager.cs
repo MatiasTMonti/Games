@@ -15,8 +15,11 @@ namespace ConsoleApp1
         Input inputP1;
         Input inputP2;
         HUD hud;
+        Attack attack;
 
         ConsoleKey cki;
+
+        bool AttackOn;
 
         public void Run()
         {
@@ -50,6 +53,10 @@ namespace ConsoleApp1
             inputP2 = new Input(player2, ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.RightArrow, ConsoleKey.LeftArrow);
 
             hud = new HUD(player1);
+
+            attack = new Attack();
+
+            AttackOn = false;
         }
 
         private void Input()
@@ -74,6 +81,11 @@ namespace ConsoleApp1
                 hud.LogicLifes();
                 player1.RespawnRandom();
             }
+
+            if (player1.posX == attack.posX && player1.posY == attack.posY)
+            {
+                AttackOn = true;
+            }
         }
 
         private void Draw()
@@ -82,6 +94,10 @@ namespace ConsoleApp1
             player2.DrawPlayers("2");
             enemy1.DrawEnemys("E");
             hud.DrawHUD();
+            attack.DrawPowerup("A");
+
+            if (AttackOn)
+                attack.LogicAttack();
         }  
     }
 }

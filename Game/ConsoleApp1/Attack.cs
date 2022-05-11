@@ -8,39 +8,31 @@ namespace ConsoleApp1
 {
     class Attack
     {
-        struct attack
+        public int posX = 10;
+        public int posY = 10;
+
+        public int PosX
         {
-            public int x;
-            public int y;
+            get => posX;
+            set => posX = value;
         }
 
-        attack attacks;
-
-        public void AttackInitialPos()
+        public int PosY
         {
-            attacks.x = 10;
-            attacks.y = 10;
+            get => posY;
+            set => posY = value;
         }
 
         public void LogicAttack()
         {
-            Console.SetCursorPosition(45, 10);
+            Console.SetCursorPosition(30, 10);
             Console.Write("Atacar");
         }
 
-        public void DrawAttack()
+        public void DrawPowerup(string draw)
         {
-            Console.SetCursorPosition(attacks.x, attacks.y);
-            Console.Write("A");
-        }
-        public int GetPosAttackX()
-        {
-            return attacks.x;
-        }
-
-        public int GetPosAttackY()
-        {
-            return attacks.y;
+            Console.SetCursorPosition(posX, posY);
+            Console.Write(draw);
         }
     }
 }
