@@ -13,6 +13,7 @@ namespace ConsoleApp1
         Personaje player2;
         Enemigo enemy1;
         Enemigo enemy2;
+        Enemigo enemy3;
         Input inputP1;
         Input inputP2;
         HUD hudP1;
@@ -51,6 +52,7 @@ namespace ConsoleApp1
 
             enemy1 = new Enemigo();
             enemy2 = new Enemigo();
+            enemy3 = new Enemigo();
 
             inputP1 = new Input(player1, ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A);
             inputP2 = new Input(player2, ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.RightArrow, ConsoleKey.LeftArrow);
@@ -73,8 +75,9 @@ namespace ConsoleApp1
             inputP1.CheckInput(cki);
             inputP2.CheckInput(cki);
 
-            enemy1.NormalEnemy();
-            enemy2.DiagonalEnemy();
+            enemy1.NormalInput();
+            enemy2.DiagonalInput();
+            enemy3.SideInput();
 
             cki = ConsoleKey.J;
         }
@@ -119,6 +122,7 @@ namespace ConsoleApp1
             player2.DrawPlayers("2");
             enemy1.DrawEnemys("E");
             enemy2.DrawEnemys("D");
+            enemy3.DrawEnemys("S");
             hudP1.DrawHUD();
             hudP2.DrawHUD();
 

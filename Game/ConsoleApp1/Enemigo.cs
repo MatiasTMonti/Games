@@ -24,7 +24,7 @@ namespace ConsoleApp1
             set => posY = value;
         }
 
-        public void NormalEnemy()
+        public void NormalInput()
         {
             switch (rand.Next(0, 4))
             {
@@ -57,7 +57,7 @@ namespace ConsoleApp1
             }
         }
 
-        public void DiagonalEnemy()
+        public void DiagonalInput()
         {
             switch (rand.Next(0, 4))
             {
@@ -87,6 +87,27 @@ namespace ConsoleApp1
                     {
                         posX++;
                         posY++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void SideInput()
+        {
+            switch (rand.Next(0, 2))
+            {
+                case 0:
+                    if (PosX > 0)
+                    {
+                        posX--;
+                    }
+                    break;
+                case 1:
+                    if (PosX < 20)
+                    {
+                        posX++;
                     }
                     break;
                 default:
