@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
@@ -12,22 +8,19 @@ namespace ConsoleApp1
         private ConsoleKey down;
         private ConsoleKey right;
         private ConsoleKey left;
+        private Personaje player;
 
-        public Input(ConsoleKey up, ConsoleKey down, ConsoleKey right, ConsoleKey left)
+        public Input(Personaje player, ConsoleKey up, ConsoleKey down, ConsoleKey right, ConsoleKey left)
         {
+            this.player = player;
             this.up = up;
             this.down = down;
             this.right = right;
             this.left = left;
         }
 
-        public void CheckInput(ConsoleKey key, Personaje player)
+        public void CheckInput(ConsoleKey key)
         {
-            if (Console.KeyAvailable)
-            {
-                key = Console.ReadKey(true).Key;
-            }
-
             if (key == up && player.posY > 0)
             {
                 MoveUp(ref player.posY);

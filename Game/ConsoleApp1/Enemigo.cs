@@ -1,74 +1,63 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
     class Enemigo
     {
-        Random random = new Random();
-        private int randomMove;
-        private int moveDir;
+        public int posX = 0;
+        public int posY = 0;
 
-        private int randomRespawnX;
-        private int randomRespawnY;
+        Random rand = new Random();
 
-        struct Enemy
+        public int PosX
         {
-            public int x;
-            public int y;
+            get => posX;
+            set => posX = value;
         }
 
-        Enemy enemy;
-
-        public void Move()
+        public int PosY
         {
-            randomMove = random.Next(0, 2);
-            moveDir = random.Next(0, 4);
+            get => posY;
+            set => posY = value;
+        }
 
-            if (moveDir == 0 && enemy.y < 20)
+        public void InputEnemys()
+        {
+            switch (rand.Next(0, 4))
             {
-                enemy.y += randomMove;
-            }
-            else if (moveDir == 1 && enemy.y > 0)
-            {
-                enemy.y -= randomMove;
-            }
-            else if (moveDir == 2 && enemy.x < 20)
-            {
-                enemy.x += randomMove;
-            }
-            else if (moveDir == 3 && enemy.x > 0)
-            {
-                enemy.x -= randomMove;
+                case 0:
+                    if (PosY > 0)
+                    {
+                        posY--;
+                    }
+                    break;
+                case 1:
+                    if (PosY < 20)
+                    {
+                        PosY++;
+                    }  
+                    break;
+                case 2:
+                    if (posX > 0)
+                    {
+                        posX--;
+                    }                 
+                    break;
+                case 3:
+                    if (posX < 20)
+                    {
+                        posX++;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
-        public void ChangePos()
+        public void DrawEnemys(string draw)
         {
-            randomRespawnX = random.Next(0, 21);
-            randomRespawnY = random.Next(0, 21);
-
-            enemy.x = randomRespawnX;
-            enemy.y = randomRespawnY;
-        }
-
-        public void WriteEnemy()
-        {
-            Console.SetCursorPosition(enemy.x, enemy.y);
-            Console.Write("E");
-        }
-
-        public int GetPosEnemyX()
-        {
-            return enemy.x;
-        }
-
-        public int GetPosEnemyY()
-        {
-            return enemy.y;
+            Console.SetCursorPosition(posX, posY);
+            Console.Write(draw);
         }
     }
 }

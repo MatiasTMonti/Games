@@ -10,7 +10,10 @@ namespace ConsoleApp1
     class GameManager
     {
         Personaje player1;
-        Input input;
+        Personaje player2;
+        Enemigo enemy1;
+        Input inputP1;
+        Input inputP2;
 
         ConsoleKey cki;
 
@@ -36,19 +39,34 @@ namespace ConsoleApp1
         private void Init()
         {
             player1 = new Personaje();
-            input = new Input(ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A);
+            player2 = new Personaje();
+
+            enemy1 = new Enemigo();
+
+            inputP1 = new Input(player1, ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A);
+            inputP2 = new Input(player2, ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.RightArrow, ConsoleKey.LeftArrow);
         }
 
         private void Input()
         {
-            cki = ConsoleKey.J;
+            if (Console.KeyAvailable)
+            {
+                cki = Console.ReadKey(true).Key;
+            }
 
-            input.CheckInput(cki, player1);
+            inputP1.CheckInput(cki);
+            inputP2.CheckInput(cki);
+
+            enemy1.InputEnemys();
+
+            cki = ConsoleKey.J;
         }
 
         private void Draw()
         {
             player1.DrawPlayers("1");
+            player2.DrawPlayers("2");
+            enemy1.DrawEnemys("E");
         }  
     }
 }
