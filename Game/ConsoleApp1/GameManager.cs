@@ -14,6 +14,7 @@ namespace ConsoleApp1
         Enemigo enemy1;
         Input inputP1;
         Input inputP2;
+        HUD hud;
 
         ConsoleKey cki;
 
@@ -26,6 +27,8 @@ namespace ConsoleApp1
             do
             {
                 Input();
+
+                Update();
 
                 Console.Clear();
 
@@ -45,6 +48,8 @@ namespace ConsoleApp1
 
             inputP1 = new Input(player1, ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A);
             inputP2 = new Input(player2, ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.RightArrow, ConsoleKey.LeftArrow);
+
+            hud = new HUD(player1);
         }
 
         private void Input()
@@ -62,11 +67,21 @@ namespace ConsoleApp1
             cki = ConsoleKey.J;
         }
 
+        private void Update()
+        {
+            if (player1.posX == enemy1.posX && player1.posY == enemy1.posY)
+            {
+                hud.LogicLifes();
+                player1.RespawnRandom();
+            }
+        }
+
         private void Draw()
         {
             player1.DrawPlayers("1");
             player2.DrawPlayers("2");
             enemy1.DrawEnemys("E");
+            hud.DrawHUD();
         }  
     }
 }
