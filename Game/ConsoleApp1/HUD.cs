@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     class HUD
     {
-        public int posX = 30;
+        public int posX = 0;
         public int posY = 0;
 
         public int PosX
@@ -28,10 +28,11 @@ namespace ConsoleApp1
         private int points = 0;
         private int lifes = 5;
 
-        public HUD(Personaje player)
+        public HUD(Personaje player, int posX, int posY)
         {
             this.player = player;
-
+            this.posX = posX;
+            this.posY = posY;
         }
 
         public void LogicPoints()
