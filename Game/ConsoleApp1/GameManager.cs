@@ -36,11 +36,13 @@ namespace ConsoleApp1
         private void Init()
         {
             player1 = new Personaje();
-            input = new Input(ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.S);
+            input = new Input(ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A);
         }
 
         private void Input()
         {
+            cki = ConsoleKey.J;
+
             input.CheckInput(cki, player1);
         }
 
