@@ -50,9 +50,9 @@ namespace ConsoleApp1
             player1 = new Personaje();
             player2 = new Personaje();
 
-            enemy1 = new Enemigo();
-            enemy2 = new Enemigo();
-            enemy3 = new Enemigo();
+            enemy1 = new Enemigo(5, 5);
+            enemy2 = new Enemigo(5, 5);
+            enemy3 = new Enemigo(0, 10);
 
             inputP1 = new Input(player1, ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A);
             inputP2 = new Input(player2, ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.RightArrow, ConsoleKey.LeftArrow);

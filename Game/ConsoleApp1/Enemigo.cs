@@ -24,6 +24,12 @@ namespace ConsoleApp1
             set => posY = value;
         }
 
+        public Enemigo(int posX, int posY)
+        {
+            this.posX = posX;
+            this.posY = posY;
+        }
+
         public void NormalInput()
         {
             switch (rand.Next(0, 4))
