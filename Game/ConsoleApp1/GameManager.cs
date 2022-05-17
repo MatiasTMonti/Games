@@ -46,9 +46,9 @@ namespace ConsoleApp1
             player1 = new Personaje();
             player2 = new Personaje();
 
-            enemy1 = new Enemigo(5, 5);
-            enemy2 = new Enemigo(5, 5);
-            enemy3 = new Enemigo(0, 10);
+            enemy1 = new Enemigo(5, 5, new NormalMovement());
+            enemy2 = new Enemigo(5, 5, new DiagonalMovement());
+            enemy3 = new Enemigo(0, 10, new SideMovement());
 
             inputP1 = new Input(player1, ConsoleKey.W, ConsoleKey.S, ConsoleKey.D, ConsoleKey.A);
             inputP2 = new Input(player2, ConsoleKey.UpArrow, ConsoleKey.DownArrow, ConsoleKey.RightArrow, ConsoleKey.LeftArrow);
@@ -71,9 +71,9 @@ namespace ConsoleApp1
             inputP1.CheckInput(cki);
             inputP2.CheckInput(cki);
 
-            enemy1.NormalInput();
-            enemy2.DiagonalInput();
-            enemy3.SideInput();
+            enemy1.Move();
+            enemy2.Move();
+            enemy3.Move();
 
             cki = ConsoleKey.J;
         }

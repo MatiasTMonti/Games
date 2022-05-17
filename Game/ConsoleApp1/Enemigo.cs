@@ -8,6 +8,7 @@ namespace ConsoleApp1
         public int posY = 0;
 
         Random rand = new Random();
+        Movement movement;
 
         private int randomRespawnX;
         private int randomRespawnY;
@@ -24,101 +25,16 @@ namespace ConsoleApp1
             set => posY = value;
         }
 
-        public Enemigo(int posX, int posY)
+        public Enemigo(int posX, int posY, Movement movement)
         {
             this.posX = posX;
             this.posY = posY;
+            this.movement = movement;
         }
 
-        public void NormalInput()
+        public void Move()
         {
-            switch (rand.Next(0, 4))
-            {
-                case 0:
-                    if (PosY > 0)
-                    {
-                        posY--;
-                    }
-                    break;
-                case 1:
-                    if (PosY < 20)
-                    {
-                        PosY++;
-                    }  
-                    break;
-                case 2:
-                    if (posX > 0)
-                    {
-                        posX--;
-                    }                 
-                    break;
-                case 3:
-                    if (posX < 20)
-                    {
-                        posX++;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public void DiagonalInput()
-        {
-            switch (rand.Next(0, 4))
-            {
-                case 0:
-                    if (PosY > 0 && posX > 0)
-                    {
-                        posY--;
-                        posX--;
-                    }
-                    break;
-                case 1:
-                    if (PosY < 20 && posX > 0)
-                    {
-                        PosY++;
-                        posX--;
-                    }
-                    break;
-                case 2:
-                    if (posX > 0 && posY < 20)
-                    {
-                        posX--;
-                        posY++;
-                    }
-                    break;
-                case 3:
-                    if (posX < 20 && posY < 20)
-                    {
-                        posX++;
-                        posY++;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public void SideInput()
-        {
-            switch (rand.Next(0, 2))
-            {
-                case 0:
-                    if (PosX > 0)
-                    {
-                        posX--;
-                    }
-                    break;
-                case 1:
-                    if (PosX < 20)
-                    {
-                        posX++;
-                    }
-                    break;
-                default:
-                    break;
-            }
+            movement.Move(ref posX, ref posY, rand);
         }
 
         public void RespawnRandom()
